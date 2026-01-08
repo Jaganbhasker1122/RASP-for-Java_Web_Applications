@@ -1,0 +1,572 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --primary-dark: #4f46e5;
+    --secondary: #ec4899;
+    --accent: #f59e0b;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f97316;
+    --dark-bg: #0f172a;
+    --dark-bg-2: #1e293b;
+    --card-bg: #1e293b;
+    --border: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-tertiary: #94a3b8;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-bg-2) 100%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header Navigation */
+header {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+/* .logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+} */
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+nav a:hover {
+    color: var(--primary);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+nav a.active {
+    color: var(--primary);
+    background: rgba(99, 102, 241, 0.15);
+}
+
+/* Main Container */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+section {
+    display: none;
+}
+
+section.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cards */
+.card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.4));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
+    transform: translateY(-4px);
+}
+
+.card h2 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+}
+
+.card h3 {
+    color: var(--primary);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.card p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.card ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.card li {
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    line-height: 1.8;
+}
+
+.card li strong {
+    color: var(--primary);
+}
+/* =========================
+   GRID (2 x 2 STAT BOXES)
+   ========================= */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr; /* stack vertically */
+    }
+}
+
+/* =========================
+   STAT BOX
+   ========================= */
+.stat-box {
+    background: linear-gradient(
+        135deg,
+        rgba(99, 102, 241, 0.12),
+        rgba(236, 72, 153, 0.12)
+    );
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Code Block */
+.code-block {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    color: var(--primary);
+    line-height: 1.6;
+}
+
+/* Input Fields */
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+/* Buttons */
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+}
+
+.btn, .btn-secondary,
+.btn-tertiary {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}
+
+/* ONLY override color */
+.btn-secondary {
+    background: linear-gradient(135deg, var(--secondary), #db2777);
+}
+
+.btn-secondary:hover {
+    box-shadow: 0 10px 20px rgba(236, 72, 153, 0.3);
+}
+
+.btn-tertiary {
+    background: linear-gradient(135deg, var(--accent), #d97706);
+}
+
+.btn-tertiary:hover {
+    box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+}
+
+/* =========================
+   RISK NOTIFICATION BOX
+   ========================= */
+.risk-box {
+    margin-top: 1rem;
+    padding: 1.25rem;
+    border-radius: 10px;
+    border: 1px solid;
+    background: rgba(15, 23, 42, 0.6);
+}
+
+/* Risk variants */
+.risk-box.low {
+    border-color: #16a34a;
+}
+
+.risk-box.medium {
+    border-color: #ca8a04;
+}
+
+.risk-box.high {
+    border-color: #dc2626;
+}
+
+/* Pattern content */
+.pattern-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+}
+
+.risk-box.low .pattern-name {
+    color: #16a34a;
+}
+
+.risk-box.medium .pattern-name {
+    color: #ca8a04;
+}
+
+.risk-box.high .pattern-name {
+    color: #dc2626;
+}
+
+.pattern-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+}
+
+.pattern-example {
+    font-family: "Fira Code", monospace;
+    font-size: 0.8rem;
+    background: rgba(2, 6, 23, 0.8);
+    padding: 0.6rem;
+    border-radius: 6px;
+    color: #e5e7eb;
+    border-left: 3px solid currentColor;
+}
+
+
+
+/* Threat Level Badge */
+.threat-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.threat-critical {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--danger);
+    border: 1px solid var(--danger);
+}
+
+.threat-high {
+    background: rgba(245, 158, 11, 0.2);
+    color: var(--warning);
+    border: 1px solid var(--warning);
+}
+
+.threat-medium {
+    background: rgba(245, 158, 11, 0.2);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.threat-low {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--success);
+    border: 1px solid var(--success);
+}
+
+/* Feature List */
+.feature-item {
+    background: rgba(99, 102, 241, 0.05);
+    border-left: 4px solid var(--primary);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+}
+
+.feature-item h4 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.feature-item p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Attack Patterns */
+.pattern-item {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.pattern-item:hover {
+    border-color: var(--secondary);
+    transform: translateX(4px);
+}
+
+.pattern-name {
+    color: var(--secondary);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.pattern-desc {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.pattern-example {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    overflow-x: auto;
+    border-left: 3px solid var(--warning);
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+th {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary);
+    padding: 1rem;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+
+tr:hover {
+    background: rgba(99, 102, 241, 0.05);
+}
+
+/* Footer */
+footer {
+    background: rgba(30, 41, 59, 0.5);
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: 3rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav {
+        gap: 1rem;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    main {
+        padding: 2rem 1rem;
+    }
+
+    .grid, .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .btn-group {
+        gap: 0.5rem;
+    }
+
+    .btn {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+}
