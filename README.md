@@ -477,14 +477,14 @@ mvn spring-boot:run
 
 ## 📞 Support & Community
 
-- 📧 **Email:** your-email@example.com
+- 📧 **Email:** jaganbhaskergurram@gmail.com
 
 ---
 
 ## 🙏 Credits & Acknowledgments
 
 ### Project Author
-- **Your Name** - Original concept and implementation
+- **Gurram Jagan Bhasker** - Original concept and implementation
 
 ### Contributors
 We thank all contributors who have helped improve this project through code, suggestions, and bug reports.
