@@ -461,7 +461,7 @@ Contributions are welcome! Here's how to get involved:
 
 ### Development Setup
 ```bash
-git clone https://github.com/yourusername/rasp-engine.git
+git clone https://github.com/Jaganbhasker1122/RASP-for-Java_Web_Applications.git
 cd rasp-engine
 mvn clean install
 mvn spring-boot:run
@@ -477,8 +477,6 @@ mvn spring-boot:run
 
 ## 📞 Support & Community
 
-- 💬 **Issues & Bugs:** [GitHub Issues](https://github.com/yourusername/rasp-engine/issues)
-- 💡 **Feature Requests:** [GitHub Discussions](https://github.com/yourusername/rasp-engine/discussions)
 - 📧 **Email:** your-email@example.com
 
 ---
