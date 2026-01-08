@@ -443,8 +443,6 @@ Perfect for learning RASP concepts, Spring Boot security, and threat detection.
 
 ## 📄 License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
 You are free to use, modify, and distribute this software for personal and commercial purposes.
 
 ---
