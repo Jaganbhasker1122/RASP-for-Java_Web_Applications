@@ -88,7 +88,7 @@ Unlike traditional WAFs (Web Application Firewalls), RASP provides:
                      │                 │                 │
           ┌──────────▼──────────┐      │                 │
           │  Risk Score < 60    │      │                 │
-          │  ✅ Allow Request    │      │                 │
+          │  ✅ Allow Request   │      │                 │
           └─────────────────────┘      │                 │
                                        │                 │
                          ┌─────────────▼──────────┐      │
