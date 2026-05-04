@@ -54,4 +54,17 @@ public class AttackLabController {
         return "HTTP request received";
     }
 
+    /**
+     * General Simulation Endpoint
+     */
+    @PostMapping(value = "/simulate", produces = "application/json")
+    public String simulateAttack(
+            @RequestParam(value = "type", required = false) String type,
+            @RequestBody(required = false) String payload,
+            @RequestHeader(value = "User-Agent", required = false) String userAgent) {
+
+        logger.info("[SIMULATE-LAB] Type: {}, User-Agent: {}, Payload: {}", type, userAgent, payload);
+        return "{\"status\": \"allowed\", \"message\": \"Request passed through security filters successfully.\"}";
+    }
+
 }
